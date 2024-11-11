@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VirtualShield</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="welcome-text">Добро пожаловать</div>
+        <div class="welcome-desc">Вы вошли как Robin</div>
+        <!-- Левая панель -->
+        <div class="left-panel hidden">
+            <div class="status-panel">
+                <header class="header">
+                    <h1>virtualshield</h1>
+                </header>
+                <div class="status">
+                    <div class="status-icon">
+                        <div class="circle"></div>
+                        <h2 id="protection-status">Full protection</h2>
+                        <p id="protection-message">Ваше устройство полностью защищено</p>
+                    </div>
+                </div>
+            </div>
+            <div class="test-panel" id="scannow">
+                <header class="header2">
+                    <h3>scannow</h3>
+                </header>
+                <div class="test-info">
+                    <button id="scan-button">Запустить сканирование</button>
+                </div>
+                <div class="scan-log" id="scan-log"></div>
+                <div class="progress-container hidden">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+            
+            
+            
+            <!-- Панель аккаунта под блоком VirtualShield -->
+            <div class="account-panel">
+                <div class="user-info">
+                    <img src="icon.jpg" alt="User Icon">
+                    <div class="user-details">
+                        <span>Robin</span>
+                        <span class="email">robin@virtualshield.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Правая панель -->
+        <div class="right-panel hidden">
+            <!-- Панель VPN -->
+            <section class="protection-area vpn" id="vpn-panel">
+                <div class="protection-content">
+                    <h3>Secure VPN</h3>
+                    <p>Unlimited GB</p>
+                    <div class="data-usage">
+                        <span class="usage-main">248 MB</span><span class="usage-secondary"> / Unlimited</span>
+                    </div>
+                    <div class="sub-panel">
+                        <label for="region-select">Region:</label>
+                        <select id="region-select">
+                            <option value="United States">United States</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Japan">Japan</option>
+                        </select>
+                        <span id="selected-region">United States</span>
+                    </div>
+                    <div class="encryption-info">
+                        <p>Your internet is being encrypted by our <span id="region-name">Los Angeles, US</span> data center</p>
+                    </div>
+                    <div class="sub-panel">
+                        <p id="encrypted-ip">Зашифрованный IP: 192.158.172.665</p>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+            </section>
+            
+            <!-- Панель антивируса -->
+            <section class="protection-area antivirus">
+                <div class="protection-content">
+                    <h3>Antivirus</h3>
+                    <p id="antivirus-status">Нет необходимости в действиях</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="antivirus-toggle" checked>
+                    <span class="slider round"></span>
+                </label>
+            </section>
+            
+<!-- Панель мониторинга ID -->
+<section class="protection-area id-monitoring" id="id-monitoring-panel">
+    <div class="protection-content">
+        <h3>ID Monitoring</h3>
+        <p>Настройка для активации</p>
+        <!-- Новые чекбоксы для личной информации и мониторинга чёрной сети -->
+        <div class="monitoring-options">
+            <label>
+                <input type="checkbox" id="personal-info-toggle" checked>
+                Личная информация
+            </label>
+            <label>
+                <input type="checkbox" id="dark-web-toggle" checked>
+                Мониторинг чёрной сети
+            </label>
+        </div>
+    </div>
+    <label class="switch">
+        <input type="checkbox" id="monitoring-toggle" checked>
+        <span class="slider round"></span>
+    </label>
+</section>
+
+        </div>
+    </div>
+    <div id="settings-panel" class="panel hidden">
+        <h2>Настройки</h2>
+        
+        <!-- Темы интерфейса -->
+        <div class="setting-option">
+            <label>Тема интерфейса</label>
+            <select id="theme-select">
+                <option value="light">Светлая</option>
+                <option value="dark">Тёмная</option>
+            </select>
+        </div>
+        
+        <!-- Уведомления -->
+        <div class="setting-option">
+            <label>Уведомления</label>
+            <label class="switch">
+                <input type="checkbox" id="notifications-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    
+        <!-- Приватность -->
+        <div class="setting-option">
+            <label>Скрыть IP</label>
+            <label class="switch">
+                <input type="checkbox" id="hide-ip-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    
+        <!-- Экономия трафика -->
+        <div class="setting-option">
+            <label>Экономия трафика</label>
+            <input type="range" id="data-saving-range" min="0" max="100" value="50">
+        </div>
+    
+        <!-- Выбор центра VPN -->
+        <div class="setting-option">
+            <label>Центр VPN</label>
+            <select id="vpn-center-select">
+                <option value="automatic">Автоматически</option>
+                <option value="us">США</option>
+                <option value="uk">Великобритания</option>
+                <option value="germany">Германия</option>
+                <!-- Другие варианты -->
+            </select>
+        </div>
+    
+        <!-- Родительский контроль -->
+        <div class="setting-option">
+            <label>Родительский контроль</label>
+            <label class="switch">
+                <input type="checkbox" id="parental-control-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    
+        <!-- Лимит использования данных -->
+        <div class="setting-option">
+            <label>Лимит использования данных (MB)</label>
+            <input type="number" id="data-limit" placeholder="Введите лимит...">
+        </div>
+    
+        <!-- Безопасность Wi-Fi -->
+        <div class="setting-option">
+            <label>Безопасный Wi-Fi</label>
+            <label class="switch">
+                <input type="checkbox" id="secure-wifi-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        
+        <!-- Журнал событий -->
+        <div class="setting-option">
+            <button id="view-log-button">Посмотреть журнал безопасности</button>
+        </div>
+        <button id="close-settings-btn">Закрыть настройки</button>
+    </div>
+    
+    
+    <script src="renderer.js"></script>
+</body>
+</html>

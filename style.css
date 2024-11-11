@@ -1,0 +1,404 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f6f9;
+}
+
+.container {
+    display: flex;
+    width: 800px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.left-panel, .right-panel {
+    padding: 20px;
+}
+
+.left-panel {
+    width: 40%;
+    border-right: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.status-panel, .account-panel, .test-panel, .protection-area {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.header2 h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.setting-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.setting-option label {
+    font-size: 14px;
+}
+
+.setting-option input[type="range"] {
+    width: 150px;
+}
+.hidden {
+    display: none;
+}
+
+#settings-panel {
+    position: absolute;
+    top: 50px; /* можно настроить, чтобы располагалась рядом с аккаунтом */
+    width: 300px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.status .circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #e0ffe0;
+    display: inline-block;
+    margin-bottom: 15px;
+    align-self: center;
+}
+.status .circle.red {
+    background-color: #ffcccc; /* Светло-красный цвет */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 15px;
+    align-self: center;
+}
+
+
+.status h2 {
+    font-size: 20px;
+    color: #28a745;
+}
+
+.status p {
+    color: #666;
+    font-size: 14px;
+}
+
+.right-panel {
+    width: 60%;
+}
+
+.protection-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.protection-content {
+    max-width: 80%;
+}
+
+.protection-area h3 {
+    font-size: 16px;
+    color: #444;
+    margin: 0;
+}
+
+.protection-area p {
+    font-size: 14px;
+    color: #888;
+    margin: 5px 0 0;
+}
+
+.data-usage {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.usage-main {
+    font-weight: bold;
+    color: #333;
+}
+
+.usage-secondary {
+    color: #aaa;
+    font-size: 16px;
+}
+
+.sub-panel {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #666;
+}
+
+.encryption-info {
+    font-size: 13px;
+    color: #666;
+    margin-top: 8px;
+}
+
+#selected-region {
+    font-weight: bold;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    margin-left: auto;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #28a745;
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+
+
+.welcome-text, .welcome-desc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    text-align: center;
+    color: #333;
+}
+
+.welcome-text {
+    font-size: 48px; /* Большой размер шрифта */
+    font-family: 'Arial', sans-serif; /* Шрифт для приветствия */
+    font-weight: bold;
+}
+
+.welcome-desc {
+    top: 58%; /* Сместим чуть ниже */
+    font-size: 22px; /* Меньше, но заметное описание */
+    font-family: 'Roboto', sans-serif; /* Модный шрифт для описания */
+    color: #666;
+}
+
+/* Анимация для появления */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Скрытие элементов */
+.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Анимация для исчезновения текста */
+.fade-out {
+    animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Стиль для скрытых панелей */
+.left-panel, .right-panel {
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeInPanels 2s forwards;
+}
+
+@keyframes fadeInPanels {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+
+
+
+
+
+#scan-button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+#scan-button:hover {
+    background-color: #0056b3;
+}
+
+.scan-log {
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    padding: 6px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    max-height: 20px;
+    overflow-y: auto;
+    font-size: 12px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    display: none; /* Скрываем по умолчанию */
+    height: 3px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #28a745;
+    width: 0;
+    transition: width 0.2s;
+}
+
+.account-panel .user-info, .test-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.account-panel .user-info img {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    border-radius: 50%;
+}
+
+.account-panel .user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-panel .user-details .email {
+    font-size: 12px;
+    color: #888;
+}
+
+.account-panel .user-options {
+    font-size: 12px;
+}
+
+.account-panel .user-options a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.account-panel .user-options a:hover {
+    text-decoration: underline;
+}
+.protection-area.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#protection-status.disabled {
+    color: #dc3545; /* Красный для отключенной защиты */
+}
+
+#protection-message.disabled {
+    color: #dc3545;
+}
