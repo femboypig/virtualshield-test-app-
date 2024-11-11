@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron');
+
 document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('load', function() {
         const welcomeText = document.querySelector('.welcome-text');
